@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modify Tickets</title>
+    <style>
+        .alert {
+            padding: 10px;
+            background-color: #f44336; /* Red */
+            color: white;
+            margin-bottom: 15px;
+        }
+        .alert.success {background-color: #4CAF50;} /* Green */
+        .alert.info {background-color: #2196F3;} /* Blue */
+        .alert.warning {background-color: #ff9800;} /* Orange */
+    </style>
+</head>
+<body>
+    <h1>Modify Tickets</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert {{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <form action="/modify_tickets" method="POST">
+        <label for="order_id">Order ID:</label>
+        <input type="text" id="order_id" name="order_id"><br><br>
+
+        <label for="user_id">User ID:</label>
+        <input type="text" id="user_id" name="user_id"><br><br>
+
+        <label for="train_id">Train ID:</label>
+        <input type="text" id="train_id" name="train_id"><br><br>
+
+        <label for="departure_station">Departure Station:</label>
+        <input type="text" id="departure_station" name="departure_station"><br><br>
+
+        <label for="arrival_station">Arrival Station:</label>
+        <input type="text" id="arrival_station" name="arrival_station"><br><br>
+
+        <label for="departure_time">Departure Time:</label>
+        <input type="text" id="departure_time" name="departure_time"><br><br>
+
+        <label for="arrival_time">Arrival Time:</label>
+        <input type="text" id="arrival_time" name="arrival_time"><br><br>
+
+        <label for="quantity">Quantity:</label>
+        <input type="text" id="quantity" name="quantity"><br><br>
+
+        <label for="total_price">Total Price:</label>
+        <input type="text" id="total_price" name="total_price"><br><br>
+
+        <label for="status">Status:</label>
+        <input type="text" id="status" name="status"><br><br>
+
+        <input type="submit" name="action" value="Add">
+        <input type="submit" name="action" value="Delete">
+        <input type="submit" name="action" value="Update">
+    </form>
+    <br>
+    <a href="/back_to_query_tickets">Back to Query Tickets</a>
+</body>
+</html>

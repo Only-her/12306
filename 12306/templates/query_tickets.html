@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query Tickets</title>
+</head>
+<body>
+    <h1>Query Tickets</h1>
+    <form action="/query_tickets" method="post">
+        <label for="departure_station">Departure Station:</label>
+        <input type="text" id="departure_station" name="departure_station">
+        <label for="arrival_station">Arrival Station:</label>
+        <input type="text" id="arrival_station" name="arrival_station">
+        <button type="submit">Search</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>User ID</th>
+                <th>Train ID</th>
+                <th>Departure Station</th>
+                <th>Arrival Station</th>
+                <th>Departure Time</th>
+                <th>Arrival Time</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>{{ order.OrderID }}</td>
+                <td>{{ order.UserID }}</td>
+                <td>{{ order.TrainID }}</td>
+                <td>{{ order.DepartureStation }}</td>
+                <td>{{ order.ArrivalStation }}</td>
+                <td>{{ order.DepartureTime }}</td>
+                <td>{{ order.ArrivalTime }}</td>
+                <td>{{ order.Quantity }}</td>
+                <td>{{ order.TotalPrice }}</td>
+                <td>{{ order.Status }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/modify_tickets">Modify Tickets</a>
+</body>
+</html>
+
